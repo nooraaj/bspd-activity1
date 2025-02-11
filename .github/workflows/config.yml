@@ -25,8 +25,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t nooraaj/my-html-app:latest .
+          docker build -t nooraaj/bspd-htmp-app:latest .
 
       - name: Push to Docker Hub
         run: |
-          docker push nooraaj/my-html-app:latest
+          docker push nooraaj/bspd-htmp-app:latest
