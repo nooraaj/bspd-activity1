@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: nginx  # ✅ Add the runner
+    runs-on: windows-latest  # ✅ Add the runner
     
     steps:
       - name: Checkout repository
@@ -25,8 +25,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t francis644/myhtml-app:latest .
+          docker build -t nooraaj/my-html-app:latest .
 
       - name: Push to Docker Hub
         run: |
-          docker push francis644/myhtml-app:latest
+          docker push nooraaj/my-html-app:latest
