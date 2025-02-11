@@ -1,31 +1,32 @@
 name: html workflow
- 
+
 on:
-    push:
-        branches:
-            main
-    pull_request:
-        branches:
-            main
-    workflow_dispatch:
- 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
-    build:
-   
-        steps:
-        - name: checkout repo
-          uses: actions/checkout@v4
- 
-        - name: docker login
-          uses: docker/login-action@v2
-          with:
-            username: ${{ secrets.DOCKER_USERNAME }}
-            password: ${{ secrets.DOCKER_PASSWORD }}
- 
-        - name: build docker image
-          run: |
-            docker build -t francis644/myhtml-app:latest .
-       
-        - name: push to docker hub
-          run: |
-            docker push francis644/myhtml-app:latest
+  build:
+    runs-on: nginx  # ✅ Add the runner
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Docker Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME_HTML }}
+          password: ${{ secrets.DOCKER_PASSWORD_HTML }}
+
+      - name: Build Docker Image
+        run: |
+          docker build -t francis644/myhtml-app:latest .
+
+      - name: Push to Docker Hub
+        run: |
+          docker push francis644/myhtml-app:latest
